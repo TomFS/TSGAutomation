@@ -8,11 +8,11 @@ Framework was build in IntelliJ Idea using Maven, RestAssured, Hamcrest.
 
     Usage:
      1. Start the mock API server:
-        run "npm install && npm run start" from within folder location
+        run "npm install && npm run start" from within folder location of "trading-tribe-technical-test-assessment"
         Server will start on "http://localhost:3000" by default
 
      2. Open TSGAutomation project
      3. Rebuild project (Menu: Build -> Rebuild)
-        Tests should run as part of build process and output will be displayed
-
-
+        Tests should run as part of build process and output will be displayed on screen.
+        Test report will also be created in ../target/surefire-reports/BaseTest.txt
+        
