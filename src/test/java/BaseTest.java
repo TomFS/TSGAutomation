@@ -46,7 +46,6 @@ public class BaseTest {
     @After
     public void tearDown() {
         if (testFixtureId != 0) {
-            System.out.print("Deleting record id: " + testFixtureId);
             when().delete(BaseUrl + "/fixture/" + testFixtureId);
         }
     }
@@ -59,7 +58,8 @@ public class BaseTest {
                 .body("findall.size()", equalTo(3))
                 .body("[0].fixtureId", notNullValue())
                 .body("[1].fixtureId", notNullValue())
-                .body("[2].fixtureId", notNullValue());
+                .body("[2].fixtureId", notNullValue())
+                .log().ifValidationFails();
     }
 
     @Test
@@ -72,13 +72,15 @@ public class BaseTest {
         when().get(BaseUrl + "/fixture/4")
                 .then().statusCode(200).contentType(JSON)
                 .body("fixtureId", equalTo(Integer.toString(testFixtureId)))
-                .body("footballFullState.teams[0].teamId", equalTo("HOME"));
+                .body("footballFullState.teams[0].teamId", equalTo("HOME"))
+                .log().ifValidationFails();
     }
 
     @Test
     // Create a new fixture and then retrieve it as soon as it's available, accounting for any delay in creation
     public void test3_CreateFixtureAndRetrieveAsSoonAsAvailable() throws InterruptedException {
         testFixtureId = 5;
+        // Rest Assured never seems to have any issue with response delay, but added Awaitility to ensure handling
         await().untilAsserted(() -> assertThat(createFixture(testFixtureId), equalTo(200)));
 
         System.out.print("Getting fixture: " + testFixtureId);
@@ -93,10 +95,10 @@ public class BaseTest {
         await().untilAsserted(() -> assertThat(createFixture(testFixtureId), equalTo(200)));
 
         when().delete(BaseUrl + "/fixture/" + testFixtureId)
-                .then().statusCode(200);
+                .then().statusCode(200).log().ifValidationFails();
 
         when().get(BaseUrl + "/fixture/" + testFixtureId)
-                .then().statusCode(404);
+                .then().statusCode(404).log().ifValidationFails();
     }
 }
 

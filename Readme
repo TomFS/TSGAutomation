@@ -3,13 +3,16 @@ Framework was build in IntelliJ Idea using Maven, RestAssured, Hamcrest.
 
     Requirements:
         - LTS version of NodeJS, and NPM: https://nodejs.org/
+        - Cloned local version of https://github.com/skybet/trading-tribe-technical-test-assessment
+        - Cloned local version of https://github.com/TomFS/TSGAutomation (this repository)
 
     Usage:
-     1. Clone a local version of https://github.com/skybet/trading-tribe-technical-test-assessment
-     2. Close a local version of
-     3. Start the mock API server:
+     1. Start the mock API server:
         run "npm install && npm run start" from within folder location
         Server will start on "http://localhost:3000" by default
 
-     2.
+     2. Open TSGAutomation project
+     3. Rebuild project (Menu: Build -> Rebuild)
+        Tests should run as part of build process and output will be displayed
+
 
