@@ -1,0 +1,15 @@
+Setup Instructions
+Framework was build in IntelliJ Idea using Maven, RestAssured, Hamcrest.
+
+    Requirements:
+        - LTS version of NodeJS, and NPM: https://nodejs.org/
+
+    Usage:
+     1. Clone a local version of https://github.com/skybet/trading-tribe-technical-test-assessment
+     2. Close a local version of
+     3. Start the mock API server:
+        run "npm install && npm run start" from within folder location
+        Server will start on "http://localhost:3000" by default
+
+     2.
+
